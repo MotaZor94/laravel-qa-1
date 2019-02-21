@@ -38,7 +38,7 @@ class QuestionController extends Controller
         // SELECT * FROM `answers` WHERE `question_id` = 1 ORDER BY `created_at` DESC
         $answers_to_q_1 = $question->answers()->oldest()->get();
 
-        $view = view('questions/index');
+        $view = view('questions/show');
 
         return $view;
     }
