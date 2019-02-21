@@ -15,9 +15,10 @@ class QuestionController extends Controller
         // SELECT * FROM `questions` ORDER BY `created_at` DESC
         $all_questions = Question::orderBy('created_at', 'desc')->get();
         // $all_questions = DB::table('questions')->latest()->get();
-        dd($all_questions);
+        
+        $view = view('questions/index');
 
-        return 'This is the list of questions';
+        return $view;
     }
 
     public function show()
@@ -37,8 +38,8 @@ class QuestionController extends Controller
         // SELECT * FROM `answers` WHERE `question_id` = 1 ORDER BY `created_at` DESC
         $answers_to_q_1 = $question->answers()->oldest()->get();
 
-        dd($answers_to_q_1);
+        $view = view('questions/index');
 
-        return 'This is a detail of a question';
+        return $view;
     }
 }
