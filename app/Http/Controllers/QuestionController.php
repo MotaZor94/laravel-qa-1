@@ -13,10 +13,10 @@ class QuestionController extends Controller
     public function index()
     {
         // SELECT * FROM `questions` ORDER BY `created_at` DESC
-        $all_questions = Question::orderBy('created_at', 'desc')->get();
+        $questions = Question::orderBy('created_at', 'desc')->get();
         // $all_questions = DB::table('questions')->latest()->get();
-        
-        $view = view('questions/index');
+  
+        $view = view('questions/index', compact('questions'));
 
         return $view;
     }
@@ -29,16 +29,15 @@ class QuestionController extends Controller
         //          Question::where('id', 1)->first();
         $question = Question::find(1);
 
-        
-        $answers_to_q_1 = Answer::where('question_id', 1)->oldest()->get();
+        // $answers_to_q_1 = Answer::where('question_id', 1)->oldest()->get();
 
         // SELECT * FROM `answers` WHERE `question_id` = 1
-        $answers_to_q_1 = $question->answers;
+        // $answers_to_q_1 = $question->answers;
         
         // SELECT * FROM `answers` WHERE `question_id` = 1 ORDER BY `created_at` DESC
-        $answers_to_q_1 = $question->answers()->oldest()->get();
+        // $answers_to_q_1 = $question->answers()->oldest()->get();
 
-        $view = view('questions/show');
+        $view = view('questions/show', compact('question'));
 
         return $view;
     }
