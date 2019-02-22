@@ -27,7 +27,7 @@ class QuestionController extends Controller
         // SELECT * FROM `questions` WHERE `id` = 1 LIMIT 1
         // $question = DB::table('questions')->where('id', 1)->first();
         //          Question::where('id', 1)->first();
-        $question = Question::find(1);
+        $question = Question::findOrFail(1);
 
         // $answers_to_q_1 = Answer::where('question_id', 1)->oldest()->get();
 
