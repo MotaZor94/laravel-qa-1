@@ -21,13 +21,13 @@ class QuestionController extends Controller
         return $view;
     }
 
-    public function show()
+    public function show($id)
     {
         // select one record from questions with id 1
         // SELECT * FROM `questions` WHERE `id` = 1 LIMIT 1
         // $question = DB::table('questions')->where('id', 1)->first();
         //          Question::where('id', 1)->first();
-        $question = Question::findOrFail(1);
+        $question = Question::findOrFail($id);
 
         // $answers_to_q_1 = Answer::where('question_id', 1)->oldest()->get();
 
