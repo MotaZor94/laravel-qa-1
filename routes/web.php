@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 
 Route::get('/questions', 'QuestionController@index');
-Route::get('/questions/{id}', 'QuestionController@show')->name('question.show');
+Route::get('/questions/{id}', 'QuestionController@show')->name('question.show')->where(['id' => '\d+']);
 Route::get('/categories', 'CategoryController@index');
 Route::get('/answers/{id}', 'AnswerController@show');
 Route::post('/answers/1', 'AnswerController@vote');
+Route::get('/questions/create', 'QuestionController@create')->name('question.create');
+Route::get('/questions', 'QuestionController@store')->name('question.store');

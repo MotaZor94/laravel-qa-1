@@ -41,4 +41,11 @@ class QuestionController extends Controller
 
         return $view;
     }
+
+    public function create()
+    {
+        $question = new Question;
+
+        return view('questions/create', compact('question'));
+    }
 }
