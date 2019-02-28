@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Answer;
 
@@ -39,5 +40,35 @@ class AnswerController extends Controller
         $answer->save();                        // updates the answer in the database
         
         return back();                          // redirects back to the previous page
+    }
+
+    public function store(Request $request, $question_id)
+    {
+        $request = request();
+
+        // 1.
+        $answer = new Answer;
+        
+        // 2.
+        $answer->text = $request->input('text');
+        // $answer->fill($request->only(['text']));
+        
+        // 3.
+        $answer->question_id = $question_id;
+        
+        // 4.
+        $answer->user_id = \Auth::id();
+        
+        // 5.
+        $answer->save();
+
+        // 6. (any of the following works)
+        return redirect()->route('question.show', [$question_id]);
+
+        return redirect()->action('QuestionController@show', [$question_id]);
+        
+        return redirect()->url('/questions/'.$question_id);
+
+        return redirect('/questions/'.$question_id);
     }
 }

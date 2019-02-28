@@ -23,3 +23,9 @@ Route::get('/answers/{id}', 'AnswerController@show');
 Route::post('/answers/1', 'AnswerController@vote');
 Route::get('/questions/create', 'QuestionController@create')->name('question.create');
 Route::post('/questions', 'QuestionController@store')->name('question.store');
+
+
+Route::post('/questions/{id}', 'AnswerController@store')->name('answer.store')->middleware('auth');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

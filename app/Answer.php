@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+    protected $fillable = ['text'];
     //
     public function question()
     {
@@ -15,5 +16,10 @@ class Answer extends Model
     public function votes()
     {
         return $this->hasMany('\App\Vote');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

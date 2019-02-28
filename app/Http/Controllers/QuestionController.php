@@ -29,6 +29,8 @@ class QuestionController extends Controller
         //          Question::where('id', 1)->first();
         $question = Question::findOrFail($id);
 
+        $answer = new Answer;
+
         // $answers_to_q_1 = Answer::where('question_id', 1)->oldest()->get();
 
         // SELECT * FROM `answers` WHERE `question_id` = 1
@@ -37,7 +39,7 @@ class QuestionController extends Controller
         // SELECT * FROM `answers` WHERE `question_id` = 1 ORDER BY `created_at` DESC
         // $answers_to_q_1 = $question->answers()->oldest()->get();
 
-        $view = view('questions/show', compact('question'));
+        $view = view('questions/show', compact('question', 'answer'));
 
         return $view;
     }
