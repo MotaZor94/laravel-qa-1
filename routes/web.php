@@ -22,4 +22,4 @@ Route::get('/categories', 'CategoryController@index');
 Route::get('/answers/{id}', 'AnswerController@show');
 Route::post('/answers/1', 'AnswerController@vote');
 Route::get('/questions/create', 'QuestionController@create')->name('question.create');
-Route::get('/questions', 'QuestionController@store')->name('question.store');
+Route::post('/questions', 'QuestionController@store')->name('question.store');

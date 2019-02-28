@@ -48,4 +48,27 @@ class QuestionController extends Controller
 
         return view('questions/create', compact('question'));
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required|min:10',
+            'text' => 'required'
+        ]);
+
+        $question = new Question;
+
+        $question->fill($request->only([
+            'title', 
+            'text'
+        ]));
+
+        $question->user_id = 0; // user_id does not have a default value and cannot be null (will correct later)
+
+        $question->save();
+
+        session()->flash('success_message', 'Success!');
+
+        return redirect()->route('question.show', ['id' => $question->id]);
+    }
 }

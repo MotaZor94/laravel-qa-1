@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('common/alerts')
+
 <section id="banner" class="banner-sm">
     <div class="container">
         <h1>Questions</h1>
